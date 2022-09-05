@@ -1,0 +1,158 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>TAP counter</title>
+
+    <style>
+
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }        
+
+        body {
+            font-family: poppins, helvetica;
+            color: #474747;
+        }
+
+        main {
+            width: 100%;
+        }
+
+        .main-head {
+            
+            padding: .5rem;
+            width: 100%;
+            height: 50px;
+
+            background-color: #f8f8f8;
+
+            display: flex;
+            justify-content: space-between;
+        }
+
+        .main-head button {
+
+            border: solid rgb(218, 218, 218) 1px;
+            background-color: #f1f1f1;
+            border-radius: .2rem;
+            padding: .5rem 1rem;
+            cursor: pointer;
+            color: #767676;
+            
+        }
+
+        .main-head button:hover {
+
+            background-color: #e9e9e9;
+            cursor: pointer;
+            color: #656565;
+
+        }
+
+        #tap-area {
+            min-height: calc(100vh - 50px);
+            width: 100%;
+
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            justify-content: center;
+            user-select: none;
+
+            /* cursor: pointer; */
+            
+        }
+
+        /* #tap-area:hover {
+            background-color: #f9f9f9;
+        } */
+
+        .taps {
+            margin: 1rem;
+        }
+
+        
+
+        #tap-counter {
+            font-size: 1.4rem;
+            user-select: none;
+        }
+
+        .circle {
+            background-color: #f1f1f1;
+
+            height: 240px;
+            width: 240px;
+
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
+            align-items: center;
+            /* padding: 4rem */
+
+            border-radius: 50%;
+            transition: ease .15s;
+        }
+
+        .circle:hover {
+            height: 250px;
+            width: 250px;
+        }
+
+    </style>
+
+</head>
+<body>
+    
+    <main>
+
+        <div class="main-head">
+            <button id="reset">Reiniciar conteo</button>
+        </div>
+
+
+        <div id="tap-area">
+            <div class="circle">
+                <h1 class="taps">Taps</h1>
+                <div id="tap-counter">0</div>   
+            </div>
+
+            <!-- <button class="tap"></button> -->
+        </div>
+
+    </main>
+
+    <script>
+
+        const reset = document.getElementById( 'reset' );
+        const tapArea = document.getElementById( 'tap-area' );
+        const tapCounter = document.getElementById( 'tap-counter' );
+
+        let counter = Number( tapCounter.innerText );
+
+        tapArea.addEventListener( 'click' , ( e ) => {
+
+            tapCounter.innerText = counter + 1;
+
+            return counter++;
+
+        } );
+
+        reset.addEventListener( 'mouseup' , ( e ) => {
+
+            tapCounter.innerText = 0;
+            counter = 0;
+
+            return counter;
+
+        } );
+
+    </script>
+
+</body>
+</html>
